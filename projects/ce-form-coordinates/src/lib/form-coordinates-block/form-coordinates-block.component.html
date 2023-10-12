@@ -1,0 +1,30 @@
+<div class="d-flex flex-column">
+    <mat-form-field *ngIf="useConverter">
+        <mat-label>Système de coordonnées</mat-label>
+        <mat-select [(ngModel)]="inputProj" (selectionChange)="onProjChange()">
+            <mat-option *ngFor="let proj of projections" [value]="proj.value">{{proj.name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div class="form-coordinates-block-grid">
+        <mat-form-field appearance="legacy">
+            <mat-label>{{coordsName.x}}</mat-label>
+            <input matInput [ngModel]="inputCoords[0]" (ngModelChange)="updateX($event)" type="number"
+                [disabled]="formBlock.readonly ?? false" [required]="formBlock.required ?? false">
+            <mat-error *ngIf="formBlock.required && !inputCoords[0]">Champ requis</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+            <mat-label>{{coordsName.y}}</mat-label>
+            <input matInput [ngModel]="inputCoords[1]" (ngModelChange)="updateY($event)" type="number"
+                [disabled]="formBlock.readonly ?? false" [required]="formBlock.required ?? false">
+            <mat-error *ngIf="formBlock.required && !inputCoords[1]">Champ requis</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+            <mat-label>{{coordsName.z}}</mat-label>
+            <input matInput [ngModel]="value[2]" (ngModelChange)="updateZ($event)" type="number"
+                [disabled]="formBlock.readonly ?? false" [required]="formBlock.required ?? false">
+            <mat-error *ngIf="formBlock.required && !value[2]">Champ requis</mat-error>
+        </mat-form-field>
+    </div>
+</div>

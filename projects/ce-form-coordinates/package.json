@@ -1,0 +1,28 @@
+{
+  "name": "@codeffekt/ce-form-coordinates",
+  "version": "13.9.0", 
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "CeForm widget to render coordinates property",  
+  "peerDependencies": {
+    "@angular/common": "^13.3.1",
+    "@angular/core": "^13.3.1",
+    "@angular/material": "^13.3.2",
+    "@angular/cdk": "^13.3.2",
+    "@codeffekt/ce-core": "^13.9.0",
+    "@codeffekt/ce-core-data": "^1.1.0",
+    "moment": "^2.29.1"
+  },
+  "dependencies": {
+    "tslib": "^2.1.0",
+    "proj4": "^2.7.2"
+  },
+  "module": "./dist/ce-form-coordinates/fesm2015/codeffekt-ce-form-coordinates.mjs",
+  "es2020": "./dist/ce-form-coordinates/fesm2020/codeffekt-ce-form-coordinates.mjs",
+  "esm2020": "./dist/ce-form-coordinates/esm2020/codeffekt-ce-form-coordinates.mjs",
+  "fesm2020": "./dist/ce-form-coordinates/fesm2020/codeffekt-ce-form-coordinates.mjs",
+  "fesm2015": "./dist/ce-form-coordinates/fesm2015/codeffekt-ce-form-coordinates.mjs",
+  "typings": "./dist/ce-form-coordinates/codeffekt-ce-form-coordinates.d.ts"
+}
