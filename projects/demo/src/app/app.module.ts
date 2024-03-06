@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { CeCoreModule } from '@codeffekt/ce-core';
+import { CeCoreModule, CeFormBlocksModule } from '@codeffekt/ce-core';
 import { CeFormCoordinatesModule } from '@codeffekt/ce-form-coordinates';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +18,7 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     CeFormCoordinatesModule,
     CeCoreModule,
+    CeFormBlocksModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
   ],
