@@ -31,9 +31,10 @@ const WGS84_COORDS_NAME = {
 };
 
 @Component({
-  selector: 'ce-form-coordinates-block',
-  templateUrl: './form-coordinates-block.component.html',
-  styleUrls: ['./form-coordinates-block.component.scss']
+    selector: 'ce-form-coordinates-block',
+    templateUrl: './form-coordinates-block.component.html',
+    styleUrls: ['./form-coordinates-block.component.scss'],
+    standalone: false
 })
 export class FormCoordinatesBlockComponent extends FormBlockComponent<number[]> implements OnInit {
 
