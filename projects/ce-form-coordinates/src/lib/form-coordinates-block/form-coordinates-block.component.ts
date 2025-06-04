@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBlockComponent } from '@codeffekt/ce-core';
 import { CeFormCoordinatesService } from '../ce-form-coordinates.service';
+import { FormBlock } from '@codeffekt/ce-core-data';
 
 const WGS84 = "WGS84";
 
-const PROJECTIONS: Array<{ name: string, value: string }> = [  
+const PROJECTIONS: Array<{ name: string, value: string }> = [
   { value: WGS84, name: "WGS 84" },
-  { value: "EPSG:2154", name: "RGF93 v1 / Lambert-93"},
+  { value: "EPSG:2154", name: "RGF93 v1 / Lambert-93" },
   { value: "EPSG:3950", name: "RGF93 / CC50" },
   { value: "EPSG:3949", name: "RGF93 / CC49" },
   { value: "EPSG:3948", name: "RGF93 / CC48" },
@@ -31,12 +32,12 @@ const WGS84_COORDS_NAME = {
 };
 
 @Component({
-    selector: 'ce-form-coordinates-block',
-    templateUrl: './form-coordinates-block.component.html',
-    styleUrls: ['./form-coordinates-block.component.scss'],
-    standalone: false
+  selector: 'ce-form-coordinates-block',
+  templateUrl: './form-coordinates-block.component.html',
+  styleUrls: ['./form-coordinates-block.component.scss'],
+  standalone: false
 })
-export class FormCoordinatesBlockComponent extends FormBlockComponent<number[]> implements OnInit {
+export class FormCoordinatesBlockComponent extends FormBlockComponent<FormBlock<number[]>> implements OnInit {
 
   useConverter = false;
   projections = PROJECTIONS;
@@ -56,37 +57,37 @@ export class FormCoordinatesBlockComponent extends FormBlockComponent<number[]> 
       this.coordsService.loadRGF93Defs();
       this.coordsName = WGS84_COORDS_NAME;
     }
-    this.inputCoords = [this.value[0], this.value[1]];
+    this.inputCoords = this.value ? [this.value[0], this.value[1]] : [0, 0];
   }
 
   updateX(xVal: number) {
     this.inputCoords[0] = xVal;
-    this.transformInputCoordsToValue();    
+    this.transformInputCoordsToValue();
   }
 
   updateY(yVal: number) {
     this.inputCoords[1] = yVal;
-    this.transformInputCoordsToValue();    
+    this.transformInputCoordsToValue();
   }
 
   updateZ(zVal: number) {
-    this.value = [this.value[0], this.value[1], zVal];
+    this.value = this.value ? [this.value[0], this.value[1], zVal] : [0, 0];
   }
 
   onProjChange() {
     this.coordsName = this.inputProj === WGS84 ? WGS84_COORDS_NAME : DEFAULT_COORDS_NAME;
-    this.inputCoords = [...this.convertCoords(WGS84, this.inputProj, [this.value[0], this.value[1]])];
+    this.inputCoords = [...this.convertCoords(WGS84, this.inputProj, this.value ? [this.value[0], this.value[1]] : [0, 0])];
   }
 
   private transformInputCoordsToValue() {
-    this.value = [...this.convertCoords(this.inputProj, WGS84, this.inputCoords), this.value[2]];
+    this.value = [...this.convertCoords(this.inputProj, WGS84, this.inputCoords), this.value ? this.value[2]: 0];
   }
 
   private convertCoords(src: string, dst: string, srcCoords: number[]) {
     if (this.useConverter && src !== dst) {
-      return this.coordsService.convert(src, dst, [...srcCoords]);      
+      return this.coordsService.convert(src, dst, [...srcCoords]);
     } else {
       return [...srcCoords];
     }
-  }  
+  }
 }

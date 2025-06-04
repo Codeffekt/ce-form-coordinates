@@ -1,6 +1,6 @@
 {
   "name": "@codeffekt/ce-form-coordinates",
-  "version": "19.0.1", 
+  "version": "19.1.0", 
   "private": false,
   "publishConfig": {
     "access": "public"
@@ -11,8 +11,8 @@
     "@angular/core": "^19.2.2",
     "@angular/material": "^19.2.3",
     "@angular/cdk": "^19.2.3",
-    "@codeffekt/ce-core": "^19.0.0",
-    "@codeffekt/ce-core-data": "^1.2.3",
+    "@codeffekt/ce-core": "^19.1.0",
+    "@codeffekt/ce-core-data": "^1.2.6",
     "moment": "^2.29.1"
   },
   "dependencies": {

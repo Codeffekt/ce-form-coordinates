@@ -22,9 +22,9 @@
 
         <mat-form-field>
             <mat-label>{{coordsName.z}}</mat-label>
-            <input matInput [ngModel]="value[2]" (ngModelChange)="updateZ($event)" type="number"
+            <input matInput [ngModel]="value ? value[2] : 0" (ngModelChange)="updateZ($event)" type="number"
                 [disabled]="formBlock.readonly ?? false" [required]="formBlock.required ?? false">
-            <mat-error *ngIf="formBlock.required && !value[2]">Champ requis</mat-error>
+            <mat-error *ngIf="formBlock.required && (!value || !value[2])">Champ requis</mat-error>
         </mat-form-field>
     </div>
 </div>
